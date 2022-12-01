@@ -123,7 +123,8 @@ def start_timer():
 # Reset Function
 def reset():
     """Resets everything to its initial settings"""
-    global timer
+    global timer, displayed_words, on_screen_words, typed_words, completed_words
+    root.unbind("<space>")
     start_button["state"] = "normal"
     underline_warning.place(x=15, y=150)
     root.after_cancel(timer)
@@ -132,8 +133,12 @@ def reset():
     root.config(bg=BEGINNING_BACKGROUND_COLOR)
     wpm_display["text"] = "WPM: ?"
     cpm_display["text"] = "CPM: ?"
-    root.unbind("<space>")
     timer = None
+    displayed_words = ""
+    on_screen_words = []
+    typed_words = []
+    completed_words = []
+
 
 
 # Creates Window
