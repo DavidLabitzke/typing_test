@@ -140,7 +140,6 @@ def reset():
     completed_words = []
 
 
-
 # Creates Window
 root = Tk()
 root.title("Speed Typing Test")
@@ -186,4 +185,3 @@ reset_button.place(x=250, y=350)
 
 # Mainloop to run window
 root.mainloop()
-
