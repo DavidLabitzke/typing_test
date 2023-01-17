@@ -43,9 +43,7 @@ def random_words():
     on_screen_words = []
     typed_words = []
     for i in range(6):
-        if len(displayed_words) >= 40:
-            pass
-        else:
+        if not len(displayed_words) >= 40:
             random_word = random.choice(words_data)
             if i == 0:
                 displayed_words += "\u0332".join(random_word) + " "
@@ -60,11 +58,11 @@ def user_typing(event):
     """Adds user typed words to the appropriate list if they match the required word. Also underlines the next
     word in sequence. If user has typed all the words on screen, random_words gets called"""
     global CHECK_WORD
-    if user_input.get().strip() != on_screen_words[CHECK_WORD]:
+    if user_input.get().strip().lower() != on_screen_words[CHECK_WORD]:
         user_input.delete(0, "end")
     else:
-        typed_words.append(user_input.get().strip())
-        completed_words.append(user_input.get().strip())
+        typed_words.append(user_input.get().strip().lower())
+        completed_words.append(user_input.get().strip().lower())
         user_input.delete(0, "end")
         CHECK_WORD += 1
         if len(on_screen_words) == len(typed_words):
